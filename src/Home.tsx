@@ -2,8 +2,8 @@ import { type ChangeEvent, useEffect, useState } from 'react';
 import { FaAngleDown, FaAngleUp, FaArrowRotateRight } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
 import styles from './Home.module.css';
-import { encodeQueryParams, usePosts } from './post';
 import InternCard from './InternCard';
+import { encodeQueryParams, usePosts } from './post';
 
 type OpenDropdownType = 'rec' | 'dm' | 'new' | null;
 
@@ -72,13 +72,15 @@ const Home = () => {
 
   // when filter settings change, re-calculate query (leads to above useEffect, i.e fetchPosts)
   useEffect(() => {
-    const q: string = encodeQueryParams({params: {
+    const q: string = encodeQueryParams({
+      params: {
         roles: roles.length === 0 ? null : roles,
         isActive: isActive,
         domains: domains.length === DOMAINS.length ? null : domains, // if null -> all domains
         order: order,
         page: currentPage - 1,
-    }});
+      },
+    });
     setQuery(q);
   }, [roles, isActive, domains, order, currentPage]);
 
