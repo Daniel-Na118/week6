@@ -94,8 +94,8 @@ const InternCard = ({ post, onLoginRequired }: InternCardProps) => {
             dDay === '상시'
               ? styles.alwaysHiring
               : dDay === '마감'
-              ? styles.deadline
-              : styles.dDay
+                ? styles.deadline
+                : styles.dDay
           }
         >
           {dDay}
